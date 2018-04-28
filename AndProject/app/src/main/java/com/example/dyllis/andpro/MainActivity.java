@@ -1,6 +1,5 @@
 package com.example.dyllis.andpro;
 
-import android.R;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,6 +26,14 @@ public class MainActivity extends Activity{
     /**********  File Path *************/
     final String uploadFilePath = "storage/DCIM/CandyCam/";//경로를 모르겠으면, 갤러리 어플리케이션 가서 메뉴->상세 정보
     final String uploadFileName = "IMG_20180426_020136461.jpg"; //전송하고자하는 파일 이름
+
+    @Override
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
 //    @Override
 //
 //    protected void onCreate(Bundle savedInstanceState) {

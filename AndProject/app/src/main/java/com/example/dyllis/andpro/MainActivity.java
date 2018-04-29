@@ -27,45 +27,39 @@ public class MainActivity extends Activity{
     final String uploadFilePath = "storage/DCIM/CandyCam/";//경로를 모르겠으면, 갤러리 어플리케이션 가서 메뉴->상세 정보
     final String uploadFileName = "IMG_20180426_020136461.jpg"; //전송하고자하는 파일 이름
 
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        uploadButton = (Button)findViewById(R.id.uploadButton);
+        messageText  = (TextView)findViewById(R.id.messageText);
+        messageText.setText("Uploading file path :- '/mnt/sdcard/"+uploadFileName+"'");
+
+        /************* Php script path ****************/
+
+        upLoadServerUri = "http://13.125.192.25/UploadToServer.php";//
+        uploadButton.setOnClickListener(new OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                dialog = ProgressDialog.show(MainActivity.this, "", "Uploading file...", true);
+                new Thread(new Runnable() {
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                messageText.setText("uploading started.....");
+                            }
+                        });
+
+                        uploadFile(uploadFilePath + "" + uploadFileName);
+                    }
+                }).start();
+            }
+        });
     }
-//    @Override
-//
-//    protected void onCreate(Bundle savedInstanceState) {
-//
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        uploadButton = (Button)findViewById(R.id.uploadButton);
-//        messageText  = (TextView)findViewById(R.id.messageText);
-//        messageText.setText("Uploading file path :- '/mnt/sdcard/"+uploadFileName+"'");
-//
-//        /************* Php script path ****************/
-//
-//        upLoadServerUri = "http://13.125.192.25/UploadToServer.php";//
-//        uploadButton.setOnClickListener(new OnClickListener() {
-//            @Override
-//
-//            public void onClick(View v) {
-//                dialog = ProgressDialog.show(MainActivity.this, "", "Uploading file...", true);
-//                new Thread(new Runnable() {
-//                    public void run() {
-//                        runOnUiThread(new Runnable() {
-//                            public void run() {
-//                                messageText.setText("uploading started.....");
-//                            }
-//                        });
-//
-//                        uploadFile(uploadFilePath + "" + uploadFileName);
-//                    }
-//                }).start();
-//            }
-//        });
-//    }
 //
 //
 //
@@ -187,8 +181,5 @@ public class MainActivity extends Activity{
 //
 //        } // End else block
 //
-//    }
-
+    }
 }
-
-

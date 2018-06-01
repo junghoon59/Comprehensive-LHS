@@ -1,0 +1,73 @@
+1. 루트 비밀번호설정
+
+1) sudo passwd root
+123123
+
+su
+123123
+
+
+
+2. APM(Apache PHP MYSQL)설치 
+
+1) apt-get update 
+=> 최신 패키지 리스트 업데이트
+
+apt-get install apache2 mysql-server mysql-client php libapache2-mod-php php-xml php-gd php-mysql 
+=> 비밀번호 아무거나 설정 (mysql 비밀번호라서, 리눅스자체 비밀번호랑은 다름)
+
+
+3. 업로드 준비
+
+1) cd /var/www/html
+
+2) mkdir uploads
+
+3) vi UploadToServer.php
+
+vi에서 다음과 같이 스크립트 작성
+
+<?php
+  
+    $file_path = "uploads/";
+     
+    $file_path = $file_path . basename( $_FILES['uploaded_file']['name']);
+    if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $file_path)) {
+        echo "success";
+    } else{
+        echo "fail";
+    }
+ ?>
+
+
+ 
+wq!를 입력하여 종료
+
+
+
+
+
+
+
+
+
+
+연동완전해결
+https://imitator.kr/Linux/1078
+
+파일찾기
+http://mwultong.blogspot.com/2006/10/find-linux-file-find-command.html
+
+컬렂거용
+http://minooz.tistory.com/83
+
+vi 검색
+http://overcode.tistory.com/entry/vi-%EC%97%90%EC%84%9C-%EB%AC%B8%EC%9E%90%EC%97%B4-%EA%B2%80%EC%83%89
+
+경로
+http://m.todayhumor.co.kr/view.php?table=total&no=9199859
+ 
+아파치 파일업로드 http://supermono.tistory.com/entry/PHP-%ED%8C%8C%EC%9D%BC-%EC%97%85%EB%A1%9C%EB%93%9C-%EC%9A%A9%EB%9F%89-%EC%A0%9C%ED%95%9C-%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95phpini-Apache
+
+아파치 파일업로드2
+https://m.blog.naver.com/PostView.nhn?blogId=ronghuan&logNo=110088735256&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F

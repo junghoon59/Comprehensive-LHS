@@ -65,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog dialog = null;
     String upLoadServerUri = null;
     //
-    final String uploadFilePath = "storage/emulated/0/Pictures/";
-    final String uploadFileName = "qwert.jpg";
-
+    final String uploadFilePath = Environment.getExternalStorageDirectory() + "/Pictures/gyeom/";
+    // = final String uploadFilePath = "storage/emulated/0/Pictures/gyeom/";
+    final String uploadFileName = "JPEG_" + ".jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         mediaScanIntent.setData(contentUri);
         sendBroadcast(mediaScanIntent);
         Toast.makeText(this, "사진이 앨범에 저장되었습니다.", Toast.LENGTH_SHORT).show();
+        
     }
 
     // 카메라 전용 크랍

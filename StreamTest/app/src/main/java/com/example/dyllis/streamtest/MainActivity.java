@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             Log.d("ERROR :: ", "test0002");
+
             if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                 File photoFile = null;
                 try {
@@ -141,11 +142,12 @@ public class MainActivity extends AppCompatActivity {
                     // getUriForFile의 두 번째 인자는 Manifest provier의 authorites와 일치해야 함
                     Uri providerURI = FileProvider.getUriForFile(this, getPackageName(), photoFile);
                     imageUri = providerURI;
-
+                    Log.d("ERROR :: ", "카메라 실행했다.");
                     // 인텐트에 전달할 때는 FileProvier의 Return값인 content://로만!!, providerURI의 값에 카메라 데이터를 넣어 보냄
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, providerURI);
-
+                    Log.d("ERROR :: ", "카메라 버튼 눌렀다.");
                     startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+                    Log.d("ERROR :: ", "확인버튼 눌렀다.");
                 }
             }
         } else {

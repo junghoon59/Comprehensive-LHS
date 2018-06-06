@@ -46,10 +46,38 @@ wq!를 입력하여 종료
 
 
 
+<스트림>
+개념다지기 좋은 http://apphappy.tistory.com/m/67
+
+2차개념 http://www.tipssoft.com/bulletin/board.php?bo_table=FAQ&wr_id=928
+
+2차개념으로 좋은 http://postitforhooney.tistory.com/entry/Java-Java-Stream%EC%9D%98-%EA%B0%9C%EB%85%90%EA%B3%BC-%EC%A2%85%EB%A5%98-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%EC%98%88%EC%A0%9C%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%B0%A8%EC%9D%B4%EC%A0%90-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0
+
+2차개 좋
+http://hunit.tistory.com/232
+
+2차개 
+http://elena90.tistory.com/entry/Java-%ED%8C%8C%EC%9D%BC-%EC%9E%85%EC%B6%9C%EB%A0%A5%EC%8A%A4%ED%8A%B8%EB%A6%BCInputStreamOutputStreamReaderWriter
+
+3차개 좋은
+http://cbts.tistory.com/54
 
 
 
+<안드로이드 서버 업로드 과정>
+http://tiii.tistory.com/28
 
+카메라촬영 
+http://g-y-e-o-m.tistory.com/47
+
+로그 
+http://djluna.tistory.com/9
+
+예외설명 
+http://linuxism.tistory.com/679
+
+이미지 url로 폴더에 저장하고 이미지 열기 
+http://heum-story.tistory.com/13
 
 
 연동완전해결
@@ -71,3 +99,12 @@ http://m.todayhumor.co.kr/view.php?table=total&no=9199859
 
 아파치 파일업로드2
 https://m.blog.naver.com/PostView.nhn?blogId=ronghuan&logNo=110088735256&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
+
+
+	<앱 - 딥러닝 협업작업>
+리눅스에서 공인/사설 아이피 찾기
+https://zetawiki.com/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_%EA%B3%B5%EC%9D%B8_IP_%ED%99%95%EC%9D%B8
+
+
+	
+	

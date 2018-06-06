@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     //
     final String uploadFilePath = Environment.getExternalStorageDirectory() + "/Pictures/gyeom/";
     // = final String uploadFilePath = "storage/emulated/0/Pictures/gyeom/";
-    final String uploadFileName = "JPEG_" + ".jpg";
+    final String uploadFileName = "Deep" + ".jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         uploadButton = (Button)findViewById(R.id.uploadButton);
         messageText  = (TextView)findViewById(R.id.messageText);
         messageText.setText("Uploading file path :- '/mnt/sdcard/"+uploadFileName+"'");
-        upLoadServerUri = "http://13.125.137.101/UploadToServer.php";//서버컴퓨터의 ip주소
+        upLoadServerUri = "http://222.118.68.81/UploadToServer.php";//서버컴퓨터의 ip주소
 
         uploadButton.setOnClickListener(new View.OnClickListener() { //
             @Override
@@ -134,13 +134,11 @@ public class MainActivity extends AppCompatActivity {
                 File photoFile = null;
                 try {
                     photoFile = createImageFile();
-                    Log.d("ERROR :: ", "test0003");
                 } catch (IOException ex) {
                     Log.e("captureCamera Error", ex.toString());
                 }
                 if (photoFile != null) {
                     // getUriForFile의 두 번째 인자는 Manifest provier의 authorites와 일치해야 함
-                    Log.d("ERROR :: ", "test0007");
                     Uri providerURI = FileProvider.getUriForFile(this, getPackageName(), photoFile);
                     imageUri = providerURI;
 
@@ -148,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, providerURI);
 
                     startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-                    Log.d("ERROR :: ", "test0008");
                 }
             }
         } else {
@@ -160,19 +157,16 @@ public class MainActivity extends AppCompatActivity {
     public File createImageFile() throws IOException {
         // Create an image file name
 
-        String imageFileName = "JPEG_" + ".jpg";
-        File imageFile = null;
+        String imageFileName = "Deep" + ".jpg";
+        //File imageFile = null;
         File storageDir = new File(Environment.getExternalStorageDirectory() + "/Pictures", "gyeom");
-        Log.d("ERROR :: ", "test0004");
         if (!storageDir.exists()) {
             Log.i("mCurrentPhotoPath1", storageDir.toString());
             storageDir.mkdirs();
-            Log.d("ERROR :: ", "test0005");
         }
 
-        imageFile = new File(storageDir, imageFileName);
+        File imageFile = new File(storageDir, imageFileName);
         mCurrentPhotoPath = imageFile.getAbsolutePath();
-        Log.d("ERROR :: ", "test0006");
         return imageFile;
     }
 

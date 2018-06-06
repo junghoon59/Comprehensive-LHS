@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         uploadButton = (Button)findViewById(R.id.uploadButton);
         messageText  = (TextView)findViewById(R.id.messageText);
         messageText.setText("Uploading file path :- '/mnt/sdcard/"+uploadFileName+"'");
-        upLoadServerUri = "http://222.118.68.81/UploadToServer.php";//서버컴퓨터의 ip주소
+        upLoadServerUri = "http://13.125.137.101/UploadToServer.php";//서버컴퓨터의 ip주소
 
         uploadButton.setOnClickListener(new View.OnClickListener() { //
             @Override

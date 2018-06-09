@@ -44,16 +44,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(getFileDir() + "test.txt", true));
-            bw.write("안녕하세요");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(getExternalPath()+ "/Pictures/Text/test.txt", true));
+            bw.write("안녕하세요 하염");
             bw.close();
             Toast.makeText(this, "저장완료", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public String getExternalPath() {
+        String sdPath ;
+        String ext = Environment.getExternalStorageState();
+        if (ext.equals(Environment.MEDIA_MOUNTED)) {
+            sdPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        } else
+            sdPath = ""+getFilesDir();
+        return sdPath;
     }
 }
 

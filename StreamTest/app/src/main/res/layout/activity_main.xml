@@ -1,19 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        android:text="파일읽기"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="mOnFileRead"/>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/txtRead"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#3F0099"
+        android:gravity="center"
+        android:text="웹에 있는 이미지 다운로드 하는 방법"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btn_down"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Image 다운로드 시작" />
+
+    <ImageView
+        android:id="@+id/imgTranslate"
+        android:layout_width="500px"
+        android:layout_height="500px"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
 

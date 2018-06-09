@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
         //서버전송
         uploadButton = (Button) findViewById(R.id.uploadButton);
         messageText = (TextView) findViewById(R.id.messageText);
-        messageText.setText("Uploading file path :- '/mnt/sdcard/" + uploadFileName + "'");
-        upLoadServerUri = "http://13.125.137.101/UploadToServer.php";//서버컴퓨터의 ip주소
+        messageText.setText("Uploading file path : " + "'" +uploadFilePath+ uploadFileName + "'");
+        upLoadServerUri = "http://222.118.68.81/UploadToServer.php";//서버컴퓨터의 ip주소
 
         uploadButton.setOnClickListener(new View.OnClickListener() { //
             @Override
@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
         String state = Environment.getExternalStorageState();
         // 외장 메모리 검사
         if (Environment.MEDIA_MOUNTED.equals(state)) {
-            Intent takePictureIntent = new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                 File photoFile = null;
                 try {
@@ -498,7 +498,7 @@ public class MainActivity extends AppCompatActivity {
                 if (serverResponseCode == 200) {
                     runOnUiThread(new Runnable() {
                         public void run() {
-                            String msg = "File Upload Completed.\n\n See uploaded file here : \n\n"
+                            String msg = "File Upload Completed.\n\nSee uploaded file here : \n\n"
                                     + uploadFileName;
                             messageText.setText(msg);
                             Toast.makeText(MainActivity.this, "File Upload Complete.",

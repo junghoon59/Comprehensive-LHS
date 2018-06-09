@@ -21,9 +21,11 @@ import android.widget.Toast;
 import com.example.dyllis.streamtest.R;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -35,63 +37,22 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button mDown;
-    ImageView mImgTrans;
-    Bitmap mBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mDown = (Button) findViewById(R.id.btn_down);
-        mImgTrans = (ImageView) findViewById(R.id.imgTranslate);
 
-        mDown.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                new LoadImage()
-                        .execute("https://t1.daumcdn.net/cfile/tistory/212DAC4C553978792D");
 
-            }
-        });
-    }
-
-    private class LoadImage extends AsyncTask<String, String, Bitmap> {
-
-        ProgressDialog pDialog;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("이미지 로딩중입니다...");
-            pDialog.show();
-        }
-
-        protected Bitmap doInBackground(String... args) {
-            try {
-                mBitmap = BitmapFactory
-                        .decodeStream((InputStream) new URL(args[0])
-                                .getContent());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return mBitmap;
-        }
-
-        protected void onPostExecute(Bitmap image) {
-
-            if (image != null) {
-                mImgTrans.setImageBitmap(image);
-                pDialog.dismiss();
-
-            } else {
-                pDialog.dismiss();
-                Toast.makeText(MainActivity.this, "이미지가 존재하지 않습니다.",
-                        Toast.LENGTH_SHORT).show();
-
-            }
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(getFileDir() + "test.txt", true));
+            bw.write("안녕하세요");
+            bw.close();
+            Toast.makeText(this, "저장완료", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

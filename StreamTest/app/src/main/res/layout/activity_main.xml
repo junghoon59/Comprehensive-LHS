@@ -14,7 +14,7 @@
         android:layout_margin="10sp"
         android:padding="0sp"
         android:scaleType="centerCrop"
-        android:src="@drawable/camera2" />
+        android:src="@drawable/camera" />
 
 
 

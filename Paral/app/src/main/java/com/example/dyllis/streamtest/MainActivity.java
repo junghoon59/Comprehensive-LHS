@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton btn_capture, btn_album;
 
-
+    //쓰레드 제한시간
+    static int expressCount;
 
     String mCurrentPhotoPath;
 
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         //서버전송
         messageText = (TextView) findViewById(R.id.messageText);
         messageText.setText("Uploading file path :- '/mnt/sdcard/" + uploadFileName + "'");
-        upLoadServerUri = "http://13.125.25.251/UploadToServer.php";//서버컴퓨터의 ip주소
+        upLoadServerUri = "http://222.118.68.81/UploadToServer.php";//서버컴퓨터의 ip주소
 
         //txt 표현
 
@@ -160,16 +161,21 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     while (true) {
                         try {
-                            Thread.sleep(1000);
                             ViewDeepResult();
-                            if(inputLine != inputCheck) {
+                            Thread.sleep(100);
+
+                            if(!inputLine.equals(inputCheck)) {
                                 resultText.setText(inputLine);
                                 tts.speak(inputLine.toString(), TextToSpeech.QUEUE_FLUSH, null);
                                 inputCheck = inputLine;
                                 break;
                             }
 
+                            if(expressCount >= 300) {
+                                break;
+                            }
 
+                            expressCount++;
 
 
                         } catch (InterruptedException e) {
@@ -212,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void PreViewDeepResult() {
         try {
-            URL yahoo = new URL("http://13.125.25.251/predictions.txt");
+            URL yahoo = new URL("http://222.118.68.81/predictions.txt");
             DataInputStream dis = new DataInputStream(yahoo.openStream());
             inputCheck = dis.readLine();
             dis.close();
@@ -232,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void ViewDeepResult() {
         try {
-            URL yahoo = new URL("http://13.125.25.251/predictions.txt");
+            URL yahoo = new URL("http://222.118.68.81/predictions.txt");
             DataInputStream dis = new DataInputStream(yahoo.openStream());
             inputLine = dis.readLine();
             dis.close();

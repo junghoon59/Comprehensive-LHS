@@ -164,14 +164,20 @@ public class MainActivity extends AppCompatActivity {
                             ViewDeepResult();
                             Thread.sleep(100);
 
-                            if(!inputLine.equals(inputCheck)) {
+
+                            if(inputLine == null) {
+
+                            }
+                            else if(!inputLine.equals(inputCheck)) {
                                 resultText.setText(inputLine);
+
                                 tts.speak(inputLine.toString(), TextToSpeech.QUEUE_FLUSH, null);
                                 inputCheck = inputLine;
                                 break;
                             }
 
-                            if(expressCount >= 300) {
+                            if(expressCount >= 200) {
+                                expressCount = 0;
                                 break;
                             }
 

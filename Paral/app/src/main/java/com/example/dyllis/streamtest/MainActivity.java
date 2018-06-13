@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     // ViewDeepResult
-    static String inputLine, changeCheck;
+    static String inputLine;
+    static String inputCheck;
     TextView resultText;
     //
 
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         //서버전송
         messageText = (TextView) findViewById(R.id.messageText);
         messageText.setText("Uploading file path :- '/mnt/sdcard/" + uploadFileName + "'");
-        upLoadServerUri = "http://222.118.68.81/UploadToServer.php";//서버컴퓨터의 ip주소
+        upLoadServerUri = "http://13.125.25.251/UploadToServer.php";//서버컴퓨터의 ip주소
 
         //txt 표현
 
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         btn_capture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 captureCamera();
 
             }
@@ -144,6 +146,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         checkPermission();
+
+        PreExpressTxt();
+
+
     }
 
 
@@ -154,11 +160,12 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     while (true) {
                         try {
-                            Thread.sleep(100);
+                            Thread.sleep(1000);
                             ViewDeepResult();
-                            if(inputLine != null) {
+                            if(inputLine != inputCheck) {
                                 resultText.setText(inputLine);
                                 tts.speak(inputLine.toString(), TextToSpeech.QUEUE_FLUSH, null);
+                                inputCheck = inputLine;
                                 break;
                             }
 
@@ -178,10 +185,54 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public void PreExpressTxt() {
+
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(100);
+                        PreViewDeepResult();
+                            break;
+
+
+
+
+                    } catch (InterruptedException e) {
+                    }
+
+                }
+            }
+        };
+        Thread thread = new Thread(task);
+        thread.start();
+
+    }
+
+    public void PreViewDeepResult() {
+        try {
+            URL yahoo = new URL("http://13.125.25.251/predictions.txt");
+            DataInputStream dis = new DataInputStream(yahoo.openStream());
+            inputCheck = dis.readLine();
+            dis.close();
+
+
+
+
+
+
+        } catch (MalformedURLException me) {
+            System.out.println("MalformedURLException: " + me);
+        } catch (IOException ioe) {
+            System.out.println("IOException: " + ioe);
+        }
+
+    }
 
     public void ViewDeepResult() {
         try {
-            URL yahoo = new URL("http://222.118.68.81/predictions.txt");
+            URL yahoo = new URL("http://13.125.25.251/predictions.txt");
             DataInputStream dis = new DataInputStream(yahoo.openStream());
             inputLine = dis.readLine();
             dis.close();

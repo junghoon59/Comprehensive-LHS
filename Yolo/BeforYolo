@@ -1,0 +1,151 @@
+1. 그래픽카드 설치
+
+  ->$ sudo add-apt-repository ppa:graphics-drivers/ppa
+
+  ->$ sudo apt-get update
+
+  ->$ sudo apt-get install nvidia-367
+
+  ->리붓 후 설치 확인
+
+  ->$ nvidia-smi
+
+ 
+
+2. 파이썬 defalut 3.5로 변경
+
+  ->$ sudo ln -sf /usr/bin/python3.5 /usr/bin/python
+
+ 
+
+3. 아나콘다 3.5 다운 // 아카이브사이트 https://repo.continuum.io/archive/ 
+
+  ->https://www.continuum.io/downloads 접속
+
+  ->Python3.5버전 = Anaconda3-4.2.0 리눅스 버전 다운
+
+// 구글에 아나콘다 4.2.0 적어서 파일 받기 
+
+ 아나콘다 파일 위치에서
+
+  ->bash Anaconda3-4.2.0-Linux-x86_64.sh
+
+  후 엔터 엔터 연속 yes 엔터
+yes
+->./bashrc yes
+
+     
+
+ 
+
+4. CUDA-8.0 Toolkit / cuDNN 설치
+
+  ->https://developer.nvidia.com/cuda-downloads 다운
+
+  ->$ chmod +x cuda_version_linux.run
+
+  ->cuDNN v5.1 다운 // 구글링
+
+  CUDA 설치파일 실행
+
+  ->$ sudo ./cuda_version_linux.run
+
+  ->accept 치고 엔터
+
+      no
+
+      yes
+
+      Enter
+
+      yes
+
+      yes
+
+      Enter
+
+ 
+     Home으로 나감
+
+  CUDA 샘플 구동해보기
+
+  ->$ cd NVIDIA_CUDA-8.0_Samples/1_Utilities/bandwidthTest/
+
+  ->$ make
+
+  ->$ ./bandwidthTest
+
+  경로 추가하기
+
+  다시 홈우로
+
+  ->$ sudo gedit ~/.bashrc  
+
+맨 아래에다가  
+
+  export CUDA_HOME=/usr/local/cuda-8.0
+
+  export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+
+  export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+추가  
+
+  cuDNN 설치
+
+  ->$ cd ~
+
+  ->$ tar xvzf cudnn-8.0-linux-x64-version.tgz
+
+  ->$ sudo cp cuda/include/cudnn.h /usr/local/cuda-8.0/include/
+
+  ->$ sudo cp cuda/lib64/* /usr/local/cuda-8.0/lib64/
+
+ 
+
+5. pip3 설치
+
+  ->$ sudo apt-get install python3-pip python3-dev
+
+ 
+6. opencv 3.2.0  설치
+
+-> sudo apt-get install g++
+-> sudo apt-get install cmake
+
+-> sudo apt-get install build-essential cmake pkg-config libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev libavcodec-dev libavformat-dev libswscale-dev libxvidcore-dev libx264-dev libxine2-dev libv4l-dev v4l-utils libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libqt4-dev mesa-utils libgl1-mesa-dri libqt4-opengl-dev libatlas-base-dev gfortran libeigen3-dev python2.7-dev python3-dev python-numpy python3-numpy
+
+-> mkdir opencv
+-> cd opencv
+-> wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.2.0.zip
+-> unzip opencv.zip
+-> wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.2.0.zip
+-> unzip opencv_contrib.zip
+
+-> cd opencv-3.2.0/
+-> mkdir build
+-> cd build
+
+-> cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=OFF -D WITH_IPP=OFF -D WITH_1394=OFF -D BUILD_WITH_DEBUG_INFO=OFF -D BUILD_DOCS=OFF -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=OFF -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D ENABLE_NEON=ON -D WITH_QT=OFF -D WITH_OPENGL=ON -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.2.0/modules -D WITH_V4L=ON -D WITH_FFMPEG=ON -D WITH_XINE=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python2.7 -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so ../
+
+ 
+
+ 
+
+ 
+
+-> cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=OFF -D WITH_IPP=OFF -D WITH_1394=OFF -D BUILD_WITH_DEBUG_INFO=OFF -D BUILD_DOCS=OFF -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=OFF -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D ENABLE_NEON=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.2.0/modules -D WITH_V4L=ON -D WITH_FFMPEG=ON -D WITH_XINE=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python2.7 -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so \ -DBUILD_LIBPROTOBUF_FROM_SOURCES=ON ..
+
+
+일단 위에 두개로 진행해서 된거같음  밑에꺼는 참고만 , 다른거 하다가 에러나서 삭제하고 다시  mkdir build하고난 다음에 위에 두개로 돌려서 성공
+
+-> cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=OFF -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D BUILD_ZLIB=ON -DOPENCV_EXTRA_MODULES_PATH=/home/cobalt/Repos/opencv_contrib/modules  -D WITH_OPENNI=ON  -D OPENNI2_INCLUDES=/home/cobalt/Repos/OpenNI2/Include -D HAVE_OPENNI2=true ..
+
+-> cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=OFF -D WITH_IPP=OFF -D WITH_1394=OFF -D BUILD_WITH_DEBUG_INFO=OFF -D BUILD_DOCS=OFF -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=OFF -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D ENABLE_NEON=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.2.0/modules -D WITH_V4L=ON -D WITH_FFMPEG=ON -D WITH_XINE=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python2.7 -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so \ -DBUILD_LIBPROTOBUF_FROM_SOURCES=ON ..
+
+-> cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=OFF -D WITH_IPP=OFF -D WITH_1394=OFF -D BUILD_WITH_DEBUG_INFO=OFF -D BUILD_DOCS=OFF -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=OFF -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D ENABLE_NEON=ON -D WITH_QT=ON -D WITH_OPENGL=ON -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.2.0/modules -D WITH_V4L=ON -D WITH_FFMPEG=ON -D WITH_XINE=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D PYTHON_INCLUDE_DIR=/usr/include/python2.7 -D PYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python2.7 -D PYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython2.7.so \ -DBUILD_LIBPROTOBUF_FROM_SOURCES=ON ..
+
+
+-> make -j6
+-> sudo make install
+-> pkg-config --modversion opencv(버전확인 마무리.)

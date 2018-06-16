@@ -1,0 +1,12 @@
+-> git clone https://github.com/AlexeyAB/Yolo_mark
+// opencv가 깔려있지 않다면 오류가 발생한다. 필히 opencv를 설치 후 적용하기 바람.
+-> vi Yolo_mark
+-> cmake .
+-> make
+-> ./linux_mark.sh
+//Yolo_mark 안에 있는 프로그램 linux_mark를 실행시켜 준다. 권한이 없을 수 있으니 chmod로 권한 변경후 진행하면 된다.
+// 이제 사진을 가지고 마킹 작업을 하면 되는데, 마킹을 한 대상의 이름 설정, 객체수 설정, 공간할당 등 설정을 해줘야 한다.
+//기존의 제공된 이미지들을 삭제하고, 수화이미지를 마킹해야하므로 수화 이미지를 기존 경로에 집어넣는다.
+// 경로 -> /Yolo_mark/x64/Release/data/img 
+
+

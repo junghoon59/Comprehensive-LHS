@@ -1,0 +1,10 @@
+-> git clone https://github.com/pjreddie/darknet
+-> cd darknet
+-> vi Makefile
+// Makefile을 따로 분리해놨기에 Yolo 폴더안에서 확인하면 된다.
+// GPU, Cudnn, opencv 모두 사용하기에 0이아닌 1로 변경하면된다.
+//설정 저장완료 후 
+
+-> make
+// Yolo 설치 및 설정 완료.
+

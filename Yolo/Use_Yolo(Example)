@@ -1,0 +1,7 @@
+-> wget https://pjreddie.com/media/files/yolo.weights 
+// Yolo에서 제공해주는 기본 가중치파일을 받아올 수 있다.
+-> ./darknet detect cfg/yolo.cfg yolo.weights data/dog.jpg
+// 기존에 존재하는 개 사진을 바탕으로 실험을 적용할 수 있다.
+// 사진을 바탕으로 적용한 것이지만 동영상 역시 진행할 수 있다.
+-> ./darknet detector demo cfg/coco.data cfg/yolo.cfg yolo.weights <video file>
+//Yolo 실행 테스트 끝.

@@ -1,11 +1,16 @@
 # Comprehensive-Paral
 종합프로젝트  (Yolo, Yolo_server, java 폴더 업데이트)
 
+
 *** Deep Learning Platform 의 설치부터 사용법 오류해결  등 Yolo 전체에 해당하는 내용을 작성.***
 
+
 - 리눅스(Ubuntu 16.04)을 기반으로 작업을 진행.
+
 - GTX 1050 GPU를 사용.
+
 - VM이 아닌 파티션을 나누어 멀티부티으로 프로잭트 진행.
+
 
 
 Yolo폴더 

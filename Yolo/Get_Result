@@ -1,0 +1,46 @@
+// 바운드 박스 처리가 된, 인식이 되어진 결과를 텍스트파일로 저장시키는 방법설명.
+// 파일 입출력을 통해 저장.
+// 좌표값 오브젝트 이름 등등 결과물로 나올 수 있는것 모두 출력가능
+// 본 페이지에서는 인식된 좌표값과 객체이름만 출력하게 설정.
+
+-> cd darknet
+-> cd src
+-> vi image.c
+// image.c 에서 코드삽입을 통해 좌표값, 객체 이름 설정을 할 수 있다.
+// 핵심 코드는 아래에 있고, 파일은 따로 올림.
+
+-> 		
+	FILE *out_fd = fopen("/var/www/html/predictions.txt", "w");
+
+	    if (out_fd == NULL)
+	    {
+		        printf("Error opening file!\n");
+		        exit(1);
+		    }
+    FILE *object;
+    FILE *box_loc;
+    char context[32];
+    int b_Box = 0;
+    object = fopen("Object.txt","w");
+	if(b_Box == 0){
+		if(box_loc = fopen("bounding_Box.txt","w")){
+			int index = 0;
+			while((context[index++] = fgetc(box_loc)) != EOF);
+			fclose(box_loc);
+
+			if(box_loc = fopen("bounding_Box.txt","w")){
+				fprintf(box_loc,context);
+				fclose(box_loc);
+			}	
+			else
+				printf("file open fail\n");
+		}
+		else
+			printf("file open fail \n");
+}
+fprintf(object,labelstr);
+		fclose(object);
+    fprintf(out_fd, "%-10s", names[class]);
+     fclose(out_fd);
+
+// 경로 설정을 통해 원하는 위치에 파일을 생성시킴.

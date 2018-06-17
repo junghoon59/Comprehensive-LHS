@@ -13,7 +13,7 @@
 
 
 
-Yolo폴더 
+Yolo 
        
        - Deep Learning platform Yolo 설치전 필수 요소들 설치.
        

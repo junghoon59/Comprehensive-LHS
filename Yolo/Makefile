@@ -1,6 +1,6 @@
-GPU=1
-CUDNN=1
-OPENCV=1
+GPU=1  //gpu사용시 1로 변경 
+CUDNN=1 // cudnn 설치 완료했으면 1로 변경 학습시 속도를 올려주는 라이브러리로서, 본컴퓨터의 학습속도가 9초에서 6초까지 떨어짐.
+OPENCV=1 // 영상인식을 위해 필수 요소.
 OPENMP=0
 DEBUG=0
 
@@ -8,7 +8,7 @@ ARCH= -gencode arch=compute_30,code=sm_30 \
       -gencode arch=compute_35,code=sm_35 \
       -gencode arch=compute_50,code=[sm_50,compute_50] \
       -gencode arch=compute_52,code=[sm_52,compute_52]\
-      -gencode arch=compute_61,code=sm_61 
+      -gencode arch=compute_61,code=sm_61   //컴퓨터 별로 arch가 다른데, 본컴퓨터 1050에서는 61을 지원. 각자 맞는 arch를 찾아서 적용
 #      -gencode arch=compute_20,code=[sm_20,sm_21] \ This one is deprecated?
 
 # This is what I use, uncomment if you know your arch and want to specify

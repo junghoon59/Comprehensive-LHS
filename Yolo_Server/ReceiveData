@@ -1,0 +1,39 @@
+//구축한 서버를 통해 앱에서 전송한 이미지나 사진이 저장을 시켰고, 저장한 후 자동화작업을 진행했다.
+
+-> cd /var/www/html
+
+//서버경로로 이동한 후에,
+
+-> vi auto.php
+
+// php파일을 생성한 후에,
+
+-> <?php
+     $time_advisior = 1000000;
+     $time = $time_advisior * 1;
+  
+     while(1) {
+  
+     if((file_exists('/home/son/darknet/data/upload/Deep.mp4'))) {
+  
+  
+  
+     shell_exec('cd /home/son/darknet; ./darknet detector demo data/obj.data yolo-obj.cfg backup/yolo-obj.backup data
+     /upload/Deep.mp4');
+  
+  
+     shell_exec('rm -f /home/son/darknet/data/upload/Deep.mp4');
+     }
+  
+     else {
+     }
+  
+     usleep($time);
+     }
+ ?>
+
+//아래 코드를 작성한 후에 저장한다.
+// 코드내용은 이미지나 동영상 파일이 넘어왔을때, 인식이 되면, 영상과 비교분석하는 명령어를 실행하게 하고, 분석이 완료되면, 전송받은 파일을
+// 삭제하는 명령어이다. 21번째 줄 참조.
+// 명령을 실행하게되면, 같은 경로내에 predictions.txt의 파일이 생성되서, 결과를 저장하게 되고, 그결과를 인터넷창에서 확인할 수 있다.
+// http://222.118.68.81/predictions.txt 로 들어가게되면, 실행했던 결과물을 볼 수 있다.

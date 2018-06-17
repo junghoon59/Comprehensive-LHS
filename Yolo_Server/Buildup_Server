@@ -1,0 +1,38 @@
+//앱으로 부터 사진이나 영상을 전달 받기 위해서 서버 구축하는 과정.
+
+-> sudo apt-get update
+-> sudo apt-get upgrade
+
+//업데이트 업그레이드 진행후
+
+-> sudo apt-get install apache2
+
+// apache2를 설치해준다.
+// 확인방법은 인터넷창에 http://localhost 를 쳐보면 된다.
+
+-> service apache2 start
+-> service apache2 stop
+-> service apache2 reload
+
+// apache2 구동 명령어.
+
+-> sudo apt-get install mysql-server
+
+//mysql도 같이 설치해준다.
+
+-> sudo add-apt-repository ppa:ondrei/php
+-> sudo apt-get update
+
+//php도 같이 설채해 줍니다.
+
+-> sudo apt-get install php5.6 php5.6-common
+-> sudo apt-get install php5.6-mysql php5.6-curl php5.6-xml php5.6-zip php5.6-gd php5.6-mbstring php5.6-mcrypt
+
+//5.6버전의 php를 설치.
+//설치가 완료되었는지 확인을 위해
+
+-> cd/var/www/html/
+-> sudo sh info.php
+
+// 스크립트 창에 명령어 echo "<?php phpinfo(); ?>"를 치고
+// http://localhost/info.php 인터넷 주소창에 작성한 후에 정상작동을 한다면 설치가 완료된 것입니다.

@@ -1,6 +1,6 @@
-GPU=1  //Gpu 사용하므로 1로 표시 사용안하면 속도가 현저히 느려진다.
-CUDNN=1  //학습할때 가속하게 해주는 라이브러리, 설치를 완료했기에 꼭 1로 변경하자 1번학습에 9초였는데, 설정 후 6초까지 떨어졌다.
-OPENCV=1  //영상인식을 위해서 필요한 존재이다. 정확한 인식을 위해 필수로 설치 완료해야하고 , 1로 변경해서 사용해주도록 한다.
+GPU=1
+CUDNN=1
+OPENCV=1
 OPENMP=0
 DEBUG=0
 
@@ -9,7 +9,6 @@ ARCH= -gencode arch=compute_30,code=sm_30 \
       -gencode arch=compute_50,code=[sm_50,compute_50] \
       -gencode arch=compute_52,code=[sm_52,compute_52]\
       -gencode arch=compute_61,code=sm_61 
-      // 본인의 컴퓨터는 GTX 1050이므로 1050 기준의 arch를 설정한 것이고, 각자 맞는 arch를 찾아서 밑에 작성, 설정해주면 된다.
 #      -gencode arch=compute_20,code=[sm_20,sm_21] \ This one is deprecated?
 
 # This is what I use, uncomment if you know your arch and want to specify
@@ -100,3 +99,4 @@ results:
 
 clean:
 	rm -rf $(OBJS) $(SLIB) $(ALIB) $(EXEC) $(EXECOBJ) $(OBJDIR)/*
+

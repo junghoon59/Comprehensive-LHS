@@ -1,0 +1,25 @@
+// 분석을 시작하고 분석이 완료되면 항상 결과를 predictions창으로 보여준다. 사진, 영상 모두.
+// predictions창이 떠있는 동안 명령어가 듣지 않음을 발견하고, 자동화를 위해 predictions 창을 띄우지 않게 설정을
+// 몇몇 부분의 주석처리를 통해 predictions창을 안나오게 설정했다.
+// detecter.c와 demo.c의 내용을 수정하였다.
+
+/* /////prediction 창을 띄우지 않고 바로 학습비교 진행을 위한 주석처리.
+#ifdef OPENCV
+            cvNamedWindow("predictions", CV_WINDOW_NORMAL); 
+            if(fullscreen){
+                cvSetWindowProperty("predictions", CV_WND_PROP_FULLSCREEN, CV_WINDOW_FULLSCREEN);
+            }
+            show_image(im, "predictions");
+            cvWaitKey(0);
+            cvDestroyAllWindows();
+#endif*/
+
+ /*if(!prefix){
+        cvNamedWindow("Demo", CV_WINDOW_NORMAL); 
+        if(fullscreen){
+            cvSetWindowProperty("Demo", CV_WND_PROP_FULLSCREEN, CV_WINDOW_FULLSCREEN);
+        } else {
+            cvMoveWindow("Demo", 0, 0);
+            cvResizeWindow("Demo", 1352, 1013);
+        }
+    }*/ //// 영상 비교에도 demo 창을 띄우지 않고 바로 비교 분석후 결과 저장을 위한 주석처리. 

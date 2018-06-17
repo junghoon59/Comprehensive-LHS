@@ -1,0 +1,24 @@
+//학습 완료된 가중치를 가지고 이제 실 적용을 한다.
+
+-> ./darknet detector test data/obj.data yolo-obj.cfg backup/ yolo-obj_800.weights data/<image file>
+// backup폴더내에 맞는 가중치 파일을 선택해서 적용시키면 된다. 이미지를 작동시키는 명령어.
+
+-> ./darknet detector demo data/obj.data yolo-obj.cfg backup/ yolo-obj_800.weights data/<video file>
+// 동영상 파일을 적용시키는 명령어이다.
+
+-> ./darknet detector demo data/obj.data yolo-obj.cfg backup/ yolo-obj_800.weights data
+//웹캠이 있을 시에는 웹캠을 적용시키는 명령어이다.
+
+
+-> ./darknet detector demo data/obj.data yolo-obj.cfg backup/yolo-obj_40000.weights data/hello1.mp4
+//실 적용한 명령어. 동영상일때,
+-> ./darknet detector test data/obj.data yolo-obj.cfg backup/yolo-obj_40000.weights data/hello1.jpg
+// 이미지파일.
+
+// 실행하게되면 몇프로가 적용되었는지 prediction과 함께 바운드 박스가 적용되어 이미지가 또는 동영상이 보이게 된다.
+// 퍼센트 조절을 통해 바운드박스의 적용을 다르게 할 수 있는데,
+
+-> ./darknet detector test data/obj.data yolo-obj.cfg backup/yolo-obj_40000.weights data/hello1.jpg -thread 50
+
+// 명령어 뒤에 -thread 50 을 적게 되면, 50퍼센트 이상의 결과값만 보여지게, 뒤에 숫자이상의 퍼센트일때만 바운드 박스가 표시되게 설정을
+// 할 수 있다.

@@ -1,3 +1,31 @@
+apt-get을 이용해 Nvidia 최신 드라이버 설치하기
+Ubuntu repository에 기본으로 추가되어 있는 nvidia 그래픽 드라이버는 이전 버전의 드라이버 이기 때문에 최신 드라이버 ppa를 추가해야 한다. ppa를 추가한 후 apt-get update를 해서 ppa update를 하고 autoinstall로 그래픽 드라이버 및 다른 ubuntu driver들도!!! 함께 설치할 수 있다.
+
+유선 또는 무선 랜 설정
+그래픽 드라이버를 받기 위해 유선 또는 무선랜을 연결한다.
+
+ctrl+alt+F1으로 터미널 모드 들어가기 (ctrl+alt+f7로 다시 gui모드 들어갈 수도 있다.)
+터미널 모드로 들어가서 lightdm을 꺼서 그래픽 드라이버 설치를 위한 준비를 한다.
+
+sudo service lightdm stop
+최신 그래픽 드라이버 ppa 추가 및 그래픽 드라이버 설치
+
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo ubuntu-drivers autoinstall
+sudo reboot
+(option) 무한 로그인 문제를 예방하기 위한 조치
+
+.Xauthority 파일 설정: 터미널에서 다음 명령어 입력
+
+mv ~/.Xauthority ~/.Xauthority.bak
+
+Nouveau 설정: /etc/modprobe.d/blacklist.conf 에서 맨 아래에 다음 줄을 추가
+
+black nouveau
+
+-----------------------------------------------------
+
 1. 그래픽카드 설치
 
   ->$ sudo add-apt-repository ppa:graphics-drivers/ppa

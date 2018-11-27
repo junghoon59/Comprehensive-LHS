@@ -22,12 +22,12 @@
 
 -----------------------------------------------
 
--> sudo add-apt-repository ppa:ondrei/php
+-> sudo add-apt-repository ppa:ondrej/php
 -> sudo apt-get update
 ------------------------------------------
 진행되지 않으면
 
-add-apt-repository ppa:ondrej/apache2
+add-apt-repository ppa:ondrej/php
 apt-get update
 apt-get upgrade
 로 실행

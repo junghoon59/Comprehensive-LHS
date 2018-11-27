@@ -20,9 +20,18 @@
 
 //mysql도 같이 설치해준다.
 
+-----------------------------------------------
+
 -> sudo add-apt-repository ppa:ondrei/php
 -> sudo apt-get update
+------------------------------------------
+진행되지 않으면
 
+add-apt-repository ppa:ondrej/apache2
+apt-get update
+apt-get upgrade
+로 실행
+---------------------------------------------
 //php도 같이 설채해 줍니다.
 
 -> sudo apt-get install php5.6 php5.6-common

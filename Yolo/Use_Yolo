@@ -18,7 +18,7 @@
 // 실행하게되면 몇프로가 적용되었는지 prediction과 함께 바운드 박스가 적용되어 이미지가 또는 동영상이 보이게 된다.
 // 퍼센트 조절을 통해 바운드박스의 적용을 다르게 할 수 있는데,
 
--> ./darknet detector test data/obj.data yolo-obj.cfg backup/yolo-obj_40000.weights data/hello1.jpg -thread 50
+-> ./darknet detector test data/obj.data yolo-obj.cfg backup/yolo-obj_40000.weights data/hello1.jpg -thresh 0.5
 
-// 명령어 뒤에 -thread 50 을 적게 되면, 50퍼센트 이상의 결과값만 보여지게, 뒤에 숫자이상의 퍼센트일때만 바운드 박스가 표시되게 설정을
+// 명령어 뒤에 -thresh 0.5 을 적게 되면, 50퍼센트 이상의 결과값만 보여지게, 뒤에 숫자이상의 퍼센트일때만 바운드 박스가 표시되게 설정을
 // 할 수 있다.
